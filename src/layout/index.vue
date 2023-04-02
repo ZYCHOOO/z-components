@@ -4,7 +4,7 @@
       <layout-menu :collapse="isCollaspe" />
     </el-aside>
     <el-container>
-      <el-header class="layout-header">
+      <el-header>
         <layout-header v-model:collapse="isCollaspe" />
       </el-header>
       <el-main>
@@ -24,5 +24,8 @@ const isCollaspe = ref(false)
 </script>
 
 <style lang="scss" scoped>
-
+.el-header {
+  padding: 0;
+  border-bottom: 1px solid #EEE;
+}
 </style>

@@ -1,7 +1,6 @@
 <template>
-  <div class="">
+  <div class="home-container">
     首页
-    <el-icon-edit></el-icon-edit>
   </div>
 </template>
 
@@ -10,6 +9,6 @@ import {} from 'vue'
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

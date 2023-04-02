@@ -1,5 +1,7 @@
 <template>
-  <component :is="currentComponent" @click="toggleCollapse" />
+  <div class="layout-header">
+    <component :is="currentComponent" @click="toggleCollapse" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -22,5 +24,10 @@ const toggleCollapse = () => {
 </script>
 
 <style lang="scss" scoped>
-
+.layout-header {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
 </style>
