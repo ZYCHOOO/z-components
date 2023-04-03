@@ -6,6 +6,7 @@ import ElementPlus from 'element-plus'
 import { camelCase2Line } from './utils/index'
 import 'element-plus/dist/index.css'
 import * as Icons from '@element-plus/icons'
+import zUI from './components'
 
 const app = createApp(App);
 
@@ -15,5 +16,5 @@ for (let i in Icons) {
   app.component(`el-icon${camelCase2Line(i)}`, (Icons as any)[i])
 }
 
-app.use(router).use(ElementPlus);
+app.use(router).use(ElementPlus).use(zUI);
 app.mount("#app");
