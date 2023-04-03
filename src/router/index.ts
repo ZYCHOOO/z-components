@@ -16,7 +16,12 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/icons',
         name: 'Icons',
-        component: () => import('../views/Icons/icons.vue')
+        component: () => import('../views/icons/index.vue')
+      },
+      {
+        path: '/chooseArea',
+        name: 'ChooseArea',
+        component: () => import('../views/chooseArea/index.vue')
       }
     ]
   }
