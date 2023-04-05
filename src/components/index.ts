@@ -1,9 +1,11 @@
 import { App } from 'vue'
 import ChooseArea from './ChooseArea'
+import Notification  from './Notification'
 import Trend from './Trend'
 
 const components = [
   ChooseArea,
+  Notification,
   Trend
 ]
 
