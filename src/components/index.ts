@@ -1,8 +1,10 @@
 import { App } from 'vue'
 import ChooseArea from './ChooseArea'
+import Trend from './Trend'
 
 const components = [
-  ChooseArea
+  ChooseArea,
+  Trend
 ]
 
 export default {
