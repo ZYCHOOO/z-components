@@ -1,22 +1,28 @@
 <template>
-   <el-popover
-    placement="top-start"
+  <el-popover
+    v-if="slots.default"
+    placement="bottom-start"
+    popper-class="notification-popper"
     :width="300"
     trigger="click"
   >
     <slot name="default" />
     <template #reference>
-      <el-badge :value="value" :max="max" :is-dot="isDot" class="notification">
+      <el-badge :value="Number(value)" :max="max" :is-dot="isDot" class="notification">
         <component :is="`el-icon${camelCase2Line(icon)}`" />
       </el-badge>
     </template>
-   </el-popover>
+  </el-popover>
+  <el-badge v-else :value="Number(value)" :max="max" :is-dot="isDot" class="notification">
+    <component :is="`el-icon${camelCase2Line(icon)}`" />
+  </el-badge>
 </template>
 
 <script setup lang="ts">
-import {} from 'vue'
+import { useSlots } from 'vue'
 import { camelCase2Line } from '../../../utils'
 
+const slots = useSlots()
 const props = defineProps({
   icon: {
     type: String,
