@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from '../views/home.vue';
-import Layout from '../layout/index.vue';
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
+import Home from '../views/home.vue'
+import Layout from '../layout/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -32,14 +32,19 @@ const routes: RouteRecordRaw[] = [
         path: '/notification',
         name: 'Notification',
         component: () => import('../views/notification/index.vue')
+      },
+      {
+        path: '/navMenu',
+        name: 'NavMenu',
+        component: () => import('../views/navMenu/index.vue')
       }
     ]
   }
-];
+]
 
 const router = createRouter({
   routes,
   history: createWebHistory(),
-});
+})
 
-export default router;
+export default router
