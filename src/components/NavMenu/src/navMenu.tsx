@@ -1,6 +1,6 @@
 import { defineComponent, PropType, useAttrs } from 'vue'
 import { MenuItem } from './types'
-import { camelCase2Line } from '../../../utils'
+import * as Icons from '@element-plus/icons'
 
 export default defineComponent({
   props: {
@@ -25,7 +25,7 @@ export default defineComponent({
     const renderMenu = (data: MenuItem[]) => {
       return data.map((item: MenuItem) => {
         // 处理菜单的图标
-        item.i = `el-icon${camelCase2Line(item.icon!)}`
+        item.i = (Icons as any)[item.icon!]
         // 处理sub-menu的插槽
         const slots = {
           title: () => {

@@ -37,6 +37,11 @@ const routes: RouteRecordRaw[] = [
         path: '/navMenu',
         name: 'NavMenu',
         component: () => import('../views/navMenu/index.vue')
+      },
+      {
+        path: '/progress',
+        name: 'Progress',
+        component: () => import('../views/progress/index.vue')
       }
     ]
   }

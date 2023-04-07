@@ -70,5 +70,8 @@ const props = defineProps({
   svg {
     margin-right: 4px;
   }
+  &:not(.el-menu--collapse) {
+    width: 200px;
+  }
 }
 </style>

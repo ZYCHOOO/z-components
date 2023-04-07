@@ -1,35 +1,30 @@
 <template>
-  <el-menu
-    default-active="1"
+  <z-nav-menu
+    router
+    :data="menuData"
     :collapse="collapse"
-    class="layout-menu"
-  >
-    <el-menu-item index="1">
-      <el-icon-menu />
-      <span>Navigator One</span>
-    </el-menu-item>
-    <el-menu-item index="2">
-      <el-icon-menu />
-      <span>Navigator Two</span>
-    </el-menu-item>
-    <el-menu-item index="3">
-      <el-icon-menu />
-      <span>Navigator Three</span>
-    </el-menu-item>
-  </el-menu>
+    :default-active="$route.path"
+  />
 </template>
 
 <script setup lang="ts">
-import {} from 'vue'
-
 const props = defineProps<{
   collapse: boolean
 }>()
 
+const menuData = [
+  { name: '首页', index: '/home', icon: 'House' },
+  { name: '图标', index: '/icons', icon: 'Aim' },
+  { name: '省市区选择', index: '/chooseArea', icon: 'Location' },
+  { name: '趋势标记', index: '/trend', icon: 'Histogram' },
+  { name: '消息通知', index: '/notification', icon: 'Bell' },
+  { name: '导航菜单', index: '/navMenu', icon: 'Menu' },
+  { name: '进度条', index: '/progress', icon: 'Loading' },
+  // { name: '', index: '', icon: '' },
+  // { name: '', index: '', icon: '' },
+  // { name: '', index: '', icon: '' },
+  // { name: '', index: '', icon: '' }
+]
+
 </script>
 
-<style lang="scss" scoped>
-.layout-menu:not(.el-menu--collapse) {
-  width: 200px;
-}
-</style>

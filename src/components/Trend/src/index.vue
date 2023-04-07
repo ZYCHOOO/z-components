@@ -43,8 +43,6 @@ const props = defineProps({
   descendIconColor: { type: String, default: '#67C23A' }
 })
 
-console.log(slots)
-
 const textColor = computed(() => {
   return props.type === 'ascend' ? props.ascendTextColor : props.descendTextColor
 })
