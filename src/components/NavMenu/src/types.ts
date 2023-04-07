@@ -1,5 +1,6 @@
 export interface MenuItem {
   // 导航图标
+  i?: any,
   icon?: string,
   // 导航名称
   name: string,

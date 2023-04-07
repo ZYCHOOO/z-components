@@ -1,6 +1,7 @@
 <template>
   <div class="nav-menu-container">
-    <z-nav-menu :data="data" />
+    <!-- <z-nav-menu :data="data" /> -->
+    <z-infinite-nav-menu :data="infiniteData" />
   </div>
 </template>
 
@@ -14,6 +15,21 @@ const data = [
     { name: '导航3-1', index: '3-1', icon: 'Document' },
     { name: '导航3-2', index: '3-2', icon: 'Document' },
   ] }
+]
+
+const infiniteData = [
+{ name: '导航1', index: '1', icon: 'Document' },
+  { name: '导航2', index: '2', icon: 'Document' },
+  { name: '导航3', index: '3', icon: 'Document', children: [
+    { name: '导航3-1', index: '3-1', icon: 'Document', children: [
+      { name: '导航3-1-1', index: '3-1-1', icon: 'Document', children: [
+        { name: '导航3-1-1-1', index: '3-1-1-1', icon: 'Document', children: [
+          { name: '导航3-1-1-1-1', index: '3-1-1-1-1', icon: 'Document' }
+        ]}
+      ]}
+    ] },
+    { name: '导航3-2', index: '3-2', icon: 'Document' },
+  ]}
 ]
 
 </script>
