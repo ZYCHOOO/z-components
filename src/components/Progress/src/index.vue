@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
+const emits = defineEmits(['finish'])
 const props = defineProps({
   percentage: {
     type: Number,
@@ -25,11 +26,11 @@ const p = ref(0)
 onMounted(() => {
   if (props.isAnimate) {
     const t = Math.ceil(props.duration % props.percentage)
-    console.log(t, 'shit')
     let timer = setInterval(() => {
       p.value += 1
       if (p.value >= props.percentage) {
         p.value = props.percentage
+        emits('finish')
         clearInterval(timer)
       }
     }, t)

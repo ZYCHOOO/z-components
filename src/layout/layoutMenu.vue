@@ -15,7 +15,8 @@ const props = defineProps<{
 const menuData = [
   { name: '首页', index: '/home', icon: 'House' },
   { name: '图标', index: '/icons', icon: 'Aim' },
-  { name: '省市区选择', index: '/chooseArea', icon: 'Location' },
+  { name: '省市区选择器', index: '/chooseArea', icon: 'Location' },
+  { name: '城市选择器', index: '/chooseCity', icon: 'OfficeBuilding' },
   { name: '趋势标记', index: '/trend', icon: 'Histogram' },
   { name: '消息通知', index: '/notification', icon: 'Bell' },
   { name: '导航菜单', index: '/navMenu', icon: 'Menu' },

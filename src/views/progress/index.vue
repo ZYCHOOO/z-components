@@ -4,11 +4,18 @@
     <br>
     <br>
     <z-progress :percentage="55" is-animate />
+    <br>
+    <br>
+    <z-progress :percentage="75" is-animate @finish="doFinish" />
   </div>
 </template>
 
 <script setup lang="ts">
-import {} from 'vue'
+import { ElMessage } from 'element-plus'
+
+const doFinish = () => {
+  ElMessage.success('加载成功!')
+}
 
 </script>
 
