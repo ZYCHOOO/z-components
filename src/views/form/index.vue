@@ -1,6 +1,15 @@
 <template>
   <div class="form-container">
-    <z-form :options="options" />
+    <z-form :options="options" label-width="100px">
+      <template #upload-area>
+        <el-button type="primary">upload</el-button>
+      </template>
+      <template #upload-tip>
+        <div style="color: #ccc; font-size: 12px;">
+          jpg/png files with a size of 500kb
+        </div>
+      </template>
+    </z-form>
   </div>
 </template>
 
@@ -48,7 +57,12 @@ const options: FormOptions[] = [
       { type: 'option', label: '学生', value: 1 },
       { type: 'option', label: '教师', value: 2 },
       { type: 'option', label: '家长', value: 3 }
-    ]
+    ],
+    attrs: {
+      style: {
+        width: '100%'
+      }
+    }
   },
   {
     type: 'checkbox-group',
@@ -59,6 +73,24 @@ const options: FormOptions[] = [
       { type: 'checkbox', label: '足球', value: 1 },
       { type: 'checkbox', label: '篮球', value: 2 }
     ]
+  },
+  {
+    type: 'radio-group',
+    value: '',
+    prop: 'gender',
+    label: '性别',
+    children: [
+      { type: 'radio', label: '男', value: 1 },
+      { type: 'radio', label: '女', value: 2 }
+    ]
+  },
+  {
+    type: 'upload',
+    label: '附件',
+    prop: 'pic',
+    uploadAttrs: {
+      action: 'https://jsonplaceholder.typicode.com/post/'
+    }
   }
 ]
 
