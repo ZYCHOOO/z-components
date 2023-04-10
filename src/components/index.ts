@@ -1,6 +1,7 @@
 import { App } from 'vue'
 import ChooseArea from './ChooseArea'
 import ChooseCity from './ChooseCity'
+import Form from './Form'
 import NavMenu from './NavMenu'
 import Notification  from './Notification'
 import Progress from './Progress'
@@ -10,6 +11,7 @@ import Trend from './Trend'
 const components = [
   ChooseArea,
   ChooseCity,
+  Form,
   NavMenu,
   Notification,
   Progress,

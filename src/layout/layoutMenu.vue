@@ -21,6 +21,7 @@ const menuData = [
   { name: '消息通知', index: '/notification', icon: 'Bell' },
   { name: '导航菜单', index: '/navMenu', icon: 'Menu' },
   { name: '进度条', index: '/progress', icon: 'Loading' },
+  { name: '表单', index: '/form', icon: 'Tickets' }
   // { name: '', index: '', icon: '' },
   // { name: '', index: '', icon: '' },
   // { name: '', index: '', icon: '' },
