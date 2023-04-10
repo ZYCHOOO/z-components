@@ -38,20 +38,17 @@ import {} from 'vue'
 
 <style lang="scss" scoped>
 .trend-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   .normal-trend,
   .custom-icon-trend,
   .slot-text-trend,
   .slot-icon-trend {
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
   }
 }
 
 .demo-text {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   &::before {
     content: '';
     display: flex;

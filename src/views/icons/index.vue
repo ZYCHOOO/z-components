@@ -31,10 +31,8 @@ const copyIcon = (name: string) => {
     border-top: 1px solid rgb(76, 77, 79);
     border-left: 1px solid rgb(76, 77, 79);
     &-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      @include flex-column;
+      @include flex-center;
       list-style: none;
       height: 90px;
       border-right: 1px solid rgb(76, 77, 79);

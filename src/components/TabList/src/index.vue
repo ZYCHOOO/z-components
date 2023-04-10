@@ -92,9 +92,7 @@ const actionClick = (item: ActionOptions) => {
       }
     }
     &-item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      @include flex-align-center;
       margin-bottom: 4px;
       padding: 8px 4px;
       &:hover {
@@ -107,9 +105,7 @@ const actionClick = (item: ActionOptions) => {
       }
     }
     &-header {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      @include flex-align-center;
       .el-tag {
         margin-left: auto;
       }
@@ -122,9 +118,8 @@ const actionClick = (item: ActionOptions) => {
       color: #606260;
     }
     &-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include flex-column;
+      @include flex-justify-center;
       margin-left: 10px;
       flex: 1;
     }
@@ -134,11 +129,9 @@ const actionClick = (item: ActionOptions) => {
       border-top: 1px solid #EEE;
     }
     &-action {
+      @include flex-center;
       position: relative;
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       cursor: pointer;
       &.bordered::after {
         content: '';

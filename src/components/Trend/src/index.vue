@@ -50,9 +50,7 @@ const textColor = computed(() => {
 
 <style lang="scss" scoped>
 .trend {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include flex-align-center;
   &-icon {
     margin-left: 6px;
     display: flex;

@@ -181,15 +181,13 @@ const changeSelect = (val: number) => {
 }
 .choose-city {
   &-header {
-    display: flex;
-    align-items: center;
+    @include flex-align-center;
     .el-select {
       margin-left: auto;
     }
   }
   &-result {
-    display: flex;
-    align-items: center;
+    @include flex-align-center;
     width: fit-content;
     cursor: pointer;
 
@@ -199,14 +197,10 @@ const changeSelect = (val: number) => {
     }
   }
   .city-option, .province-option {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    @include flex-wrap;
     margin-top: 10px;
     &-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-center;
       margin: 0 4px 4px 0;
       padding: 0 4px;
       min-width: 16px;
@@ -217,8 +211,7 @@ const changeSelect = (val: number) => {
     }
   }
   .city-row, .province-row {
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     margin-top: 6px;
     &-key {
       min-width: 24px;
@@ -226,9 +219,7 @@ const changeSelect = (val: number) => {
     }
     &-value {
       flex: 1;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      @include flex-wrap;
     }
     &-item {
       margin: 0 4px 4px 0;

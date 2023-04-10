@@ -25,9 +25,8 @@ const toggleCollapse = () => {
 
 <style lang="scss" scoped>
 .layout-header {
+  @include flex-align-center;
   padding: 0 20px;
-  display: flex;
-  align-items: center;
   height: 60px;
 }
 </style>
