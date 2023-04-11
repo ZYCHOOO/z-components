@@ -2,6 +2,7 @@ import { App } from 'vue'
 import ChooseArea from './ChooseArea'
 import ChooseCity from './ChooseCity'
 import Form from './Form'
+import ModalForm from './ModalForm'
 import NavMenu from './NavMenu'
 import Notification  from './Notification'
 import Progress from './Progress'
@@ -12,6 +13,7 @@ const components = [
   ChooseArea,
   ChooseCity,
   Form,
+  ModalForm,
   NavMenu,
   Notification,
   Progress,
