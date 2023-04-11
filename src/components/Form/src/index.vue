@@ -75,6 +75,7 @@
 
 <script setup lang="ts">
 import E from 'wangeditor'
+import { upload } from './upload'
 import cloneDeep from 'lodash/cloneDeep'
 import { FormOptions, FormInstance } from './types/type'
 import { ref, PropType, onMounted, watch, defineExpose, nextTick } from 'vue'
@@ -106,6 +107,8 @@ const props = defineProps({
 const model = ref<any>(null)
 const rules = ref<any>(null)
 const formRef = ref<FormInstance | null>()
+const editor = ref()
+const { onPreview, onRemove, onSuccess, onError, onProgress, onChange, beforeUpload, beforeRemove, onExceed } = upload(props, emits, model)
 
 // 初始化表单
 const initForm = () => {
@@ -128,16 +131,28 @@ const initForm = () => {
 const initEditor = (item: FormOptions) => {
   nextTick(() => {
     if (document.getElementById('editor')) {
-      const editor = new E('#editor')
-      editor.config.placeholder = item.placeholder!
-      editor.create()
+      const e = new E('#editor')
+      e.config.placeholder = item.placeholder!
+      e.create()
       // 初始化富文本编辑器的值
-      editor.txt.html(item.value!)
-      editor.config.onchange = (html: string) => {
+      e.txt.html(item.value!)
+      e.config.onchange = (html: string) => {
         model.value[item.prop!] = html
       }
+      editor.value = e
     }
   })
+}
+
+// 重置表单
+const resetFields = () => {
+  // 重置 element-plus 表单
+  formRef.value?.resetFields()
+  // 重置富文本编辑器
+  if (props.options && props.options.length) {
+    const editorItem = props.options.find(item => item.type === 'editor')
+    editor.value.txt.html(editorItem?.value)
+  }
 }
 
 onMounted(() => {
@@ -149,36 +164,10 @@ watch(() => props.options, () => {
   initForm()
 }, { deep: true })
 
-// 上传组件的所有方法
-const onPreview = (file: File) => {
-  emits('onPreview', file)
-}
-const onRemove = (file: File, fileList: FileList) => {
-  emits('onRemove', { file, fileList })
-}
-const onSuccess = (response: any, file: File, fileList: FileList) => {
-  const uploadItem = props.options.find(item => item.type === 'upload')!
-  model.value[uploadItem.prop!] = { response, file, fileList }
-  emits('onSuccess', { response, file, fileList })
-}
-const onError = (err: any, file: File, fileList: FileList) => {
-  emits('onError', { err, file, fileList })
-}
-const onProgress = (event: any, file: File, fileList: FileList) => {
-  emits('onProgress', { event, file, fileList })
-}
-const onChange = (file: File, fileList: FileList) => {
-  emits('onChange', { file, fileList })
-}
-const beforeUpload = (file: File) => {
-  emits('beforeUpload', file)
-}
-const beforeRemove = (file: File, fileList: FileList) => {
-  emits('beforeRemove', { file, fileList })
-}
-const onExceed = (files: File, fileList: FileList) => {
-  emits('onExceed', { files, fileList })
-}
+defineExpose({
+  resetFields
+})
+
 
 </script>
 

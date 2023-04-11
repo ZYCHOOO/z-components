@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-    <z-form :options="options" label-width="100px">
+    <z-form ref="formRef" :options="options" label-width="100px">
       <template #upload-area>
         <el-button type="primary">upload</el-button>
       </template>
@@ -11,13 +11,14 @@
       </template>
       <template #action="scope" >
         <el-button type="primary" @click="doSubmit(scope)">提交</el-button>
-        <el-button type="default" plain @click="doReset(scope)">重置</el-button>
+        <el-button type="default" plain @click="doReset">重置</el-button>
       </template>
     </z-form>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { FormOptions, FormInstance } from '../../components/Form/src/types/type'
 
@@ -25,6 +26,8 @@ interface Scope {
   form: FormInstance,
   model: any
 }
+
+const formRef = ref()
 
 const options: FormOptions[] = [
   {
@@ -110,6 +113,7 @@ const options: FormOptions[] = [
   {
     type: 'editor',
     label: '描述',
+    value: '',
     prop: 'desc',
     placeholder: '请输入描述',
     rules: [
@@ -130,8 +134,8 @@ const doSubmit = (scope: Scope) => {
   })
 }
 
-const doReset = (scope: Scope) => {
-  scope.form.resetFields()
+const doReset = () => {
+  formRef.value.resetFields()
 }
 
 </script>
