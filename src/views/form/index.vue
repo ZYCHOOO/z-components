@@ -9,12 +9,22 @@
           jpg/png files with a size of 500kb
         </div>
       </template>
+      <template #action="scope" >
+        <el-button type="primary" @click="doSubmit(scope)">提交</el-button>
+        <el-button type="default" plain @click="doReset(scope)">重置</el-button>
+      </template>
     </z-form>
   </div>
 </template>
 
 <script setup lang="ts">
-import { FormOptions } from '../../components/Form/src/types/type'
+import { ElMessage } from 'element-plus'
+import { FormOptions, FormInstance } from '../../components/Form/src/types/type'
+
+interface Scope {
+  form: FormInstance,
+  model: any
+}
 
 const options: FormOptions[] = [
   {
@@ -40,7 +50,7 @@ const options: FormOptions[] = [
       { min: 6, max: 15, message: '密码在6-15位之间' }
     ],
     attrs: {
-      // showPassword: true
+      showPassword: true,
       clearable: true
     }
   },
@@ -89,10 +99,35 @@ const options: FormOptions[] = [
     label: '附件',
     prop: 'pic',
     uploadAttrs: {
-      action: 'https://jsonplaceholder.typicode.com/post/'
-    }
+      action: 'https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15',
+      multiple: true,
+      limit: 3
+    },
+    rules: [
+      {
+        required: true,
+        message: '附件不能为空！',
+        trigger: 'blur'
+      }
+    ]
   }
 ]
+
+const doSubmit = (scope: Scope) => {
+  const { form, model } = scope
+  form.validate((valid) => {
+    if (valid) {
+      console.log(model)
+      ElMessage.success('提交成功！')
+    } else {
+      ElMessage.error('请完成表单填写！')
+    }
+  })
+}
+
+const doReset = (scope: Scope) => {
+  scope.form.resetFields()
+}
 
 </script>
 
