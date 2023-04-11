@@ -104,11 +104,16 @@ const options: FormOptions[] = [
       limit: 3
     },
     rules: [
-      {
-        required: true,
-        message: '附件不能为空！',
-        trigger: 'blur'
-      }
+      { required: true, message: '附件不能为空！', trigger: 'blur' }
+    ]
+  },
+  {
+    type: 'editor',
+    label: '描述',
+    prop: 'desc',
+    placeholder: '请输入描述',
+    rules: [
+      { required: true, message: '描述不能为空！', trigger: 'blur' }
     ]
   }
 ]

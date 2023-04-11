@@ -15,7 +15,8 @@
     "element-plus": "^2.3.1",
     "lodash": "^4.17.21",
     "vue": "^3.2.47",
-    "vue-router": "^4.0.13"
+    "vue-router": "^4.0.13",
+    "wangeditor": "^4.7.15"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

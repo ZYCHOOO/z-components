@@ -8,21 +8,23 @@
     :validate-on-rule-change="false"
   >
     <template v-for="(item, i) in options" :key="i">
-      <!-- 正常组件 -->
       <el-form-item
-        v-if="!item.children || !item.children!.length"
-        :label="item.label"
-        :prop="item.prop"
+      v-if="!item.children || !item.children!.length"
+      :label="item.label"
+      :prop="item.prop"
       >
+        <!-- 正常组件 -->
         <component
-          v-if="item.type !== 'upload'"
+          v-if="item.type !== 'upload' && item.type !== 'editor'"
           v-bind="item.attrs"
           v-model="model[item.prop!]"
           :is="`el-${item.type}`"
           :placeholder="item.placeholder"
         />
+
+        <!-- 上传组件 -->
         <el-upload
-          v-else
+          v-if="item.type === 'upload'"
           v-bind="item.uploadAttrs"
           :on-preview="onPreview"
           :on-remove="onRemove"
@@ -38,6 +40,9 @@
           <slot name="upload-area" />
           <slot name="upload-tip" />
         </el-upload>
+
+        <!-- 富文本编辑器 -->
+        <div id="editor" v-if="item.type === 'editor'" />
       </el-form-item>
 
       <!-- 多选/单选 -->
@@ -69,9 +74,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, PropType, onMounted, watch } from 'vue'
-import { FormOptions, FormInstance } from './types/type'
+import E from 'wangeditor'
 import cloneDeep from 'lodash/cloneDeep'
+import { FormOptions, FormInstance } from './types/type'
+import { ref, PropType, onMounted, watch, defineExpose, nextTick } from 'vue'
 
 const emits = defineEmits([
   'onPreview',
@@ -109,10 +115,29 @@ const initForm = () => {
     props.options.map((item: FormOptions) => {
       m[item.prop!] = item.value
       r[item.prop!] = item.rules
+      if (item.type === 'editor') {
+        initEditor(item)
+      }
     })
     model.value = cloneDeep(m)
     rules.value = cloneDeep(r)
   }
+}
+
+// 初始化富文本编辑器
+const initEditor = (item: FormOptions) => {
+  nextTick(() => {
+    if (document.getElementById('editor')) {
+      const editor = new E('#editor')
+      editor.config.placeholder = item.placeholder!
+      editor.create()
+      // 初始化富文本编辑器的值
+      editor.txt.html(item.value!)
+      editor.config.onchange = (html: string) => {
+        model.value[item.prop!] = html
+      }
+    }
+  })
 }
 
 onMounted(() => {
