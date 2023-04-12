@@ -155,6 +155,15 @@ const resetFields = () => {
   }
 }
 
+// 表单验证方法
+let validate = () => {
+  return formRef.value!.validate
+}
+// 获取表单数据
+let getFormData = () => {
+  return model.value
+}
+
 onMounted(() => {
   initForm()
 })
@@ -165,10 +174,10 @@ watch(() => props.options, () => {
 }, { deep: true })
 
 defineExpose({
-  resetFields
+  resetFields,
+  validate,
+  getFormData
 })
-
-
 </script>
 
 <style lang="scss" scoped>
