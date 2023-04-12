@@ -7,6 +7,7 @@
     <template #default>
       <z-form
         ref="formRef"
+        :label-width="labelWidth"
         :options="options"
         @on-change="onChange"
         @before-upload="beforeUpload"
@@ -42,6 +43,10 @@ const props = defineProps({
   visible: {
     type: Boolean,
     default: false
+  },
+  labelWidth: {
+    type: String,
+    default: '100px'
   },
   options: {
     type: Array as PropType<FormOptions[]>,
@@ -84,9 +89,12 @@ watch(() => dialogVisible.value, (val) => {
 
 </script>
 
-<style lang="scss" scoped>
-.modal-form-dialog {
-  
+<style lang="scss">
+.scrollable {
+   .el-dialog__body {
+    height: 50vh;
+    overflow: scroll;
+  }
 }
 </style>
 
