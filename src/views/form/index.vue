@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { FormOptions, FormInstance } from '../../components/Form/src/types/type'
+import { FormOption, FormInstance } from '../../components/Form/src/types/type'
 
 interface Scope {
   form: FormInstance,
@@ -29,7 +29,7 @@ interface Scope {
 
 const formRef = ref()
 
-const options: FormOptions[] = [
+const options: FormOption[] = [
   {
     type: 'input',
     value: '',

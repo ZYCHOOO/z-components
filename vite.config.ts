@@ -10,7 +10,7 @@ export default defineConfig({
     alias: [{ find: '@', replacement: resolve(__dirname, 'src') }]
   },
   server: {
-    host: '192.168.10.12',
+    host: '192.168.3.45',
     port: 8080,
   },
   css: {

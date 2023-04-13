@@ -1,7 +1,7 @@
-import { FormOptions } from './types/type'
+import { FormOption } from './types/type'
 
 interface Props {
-  options: FormOptions[],
+  options: FormOption[],
   httpReqest?: Function
 }
 

@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { FormOptions, FormInstance } from '../../components/Form/src/types/type'
+import { FormOption, FormInstance } from '../../components/Form/src/types/type'
 
 const visible = ref<boolean>(false)
 
@@ -34,7 +34,7 @@ const doOpen = () => {
   visible.value = true
 }
 
-const options: FormOptions[] = [
+const options: FormOption[] = [
   {
     type: 'input',
     value: '',

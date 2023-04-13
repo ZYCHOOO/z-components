@@ -23,9 +23,7 @@ const menuData = [
   { name: '进度条', index: '/progress', icon: 'Loading' },
   { name: '表单', index: '/form', icon: 'Tickets' },
   { name: '弹出框表单', index: '/modalForm', icon: 'DocumentCopy' },
-  // { name: '', index: '', icon: '' },
-  // { name: '', index: '', icon: '' },
-  // { name: '', index: '', icon: '' }
+  { name: '表格', index: '/table', icon: 'Grid' },
 ]
 
 </script>

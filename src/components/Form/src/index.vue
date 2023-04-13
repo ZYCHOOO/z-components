@@ -77,7 +77,7 @@
 import E from 'wangeditor'
 import { upload } from './upload'
 import cloneDeep from 'lodash/cloneDeep'
-import { FormOptions, FormInstance } from './types/type'
+import { FormOption, FormInstance } from './types/type'
 import { ref, PropType, onMounted, watch, defineExpose, nextTick } from 'vue'
 
 const emits = defineEmits([
@@ -95,7 +95,7 @@ const emits = defineEmits([
 const props = defineProps({
   // 表单配置项
   options: {
-    type: Array as PropType<FormOptions[]>,
+    type: Array as PropType<FormOption[]>,
     required: true
   },
   // 用户自定义上传行为
@@ -115,7 +115,7 @@ const initForm = () => {
   if (props.options && props.options.length) {
     const m: any = {}
     const r: any = {}
-    props.options.map((item: FormOptions) => {
+    props.options.map((item: FormOption) => {
       m[item.prop!] = item.value
       r[item.prop!] = item.rules
       if (item.type === 'editor') {
@@ -128,7 +128,7 @@ const initForm = () => {
 }
 
 // 初始化富文本编辑器
-const initEditor = (item: FormOptions) => {
+const initEditor = (item: FormOption) => {
   nextTick(() => {
     if (document.getElementById('editor')) {
       const e = new E('#editor')

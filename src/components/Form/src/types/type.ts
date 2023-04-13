@@ -7,7 +7,7 @@ interface Callback {
 }
 
 // 表单每一项的配置选项
-export interface FormOptions {
+export interface FormOption {
   // 表单项显示的元素
   type: 'cascader' | 'checkbox' | 'checkbox-group' | 'checkbox-button' |
   'color-picker' | 'date-picker' | 'input' | 'input-number' | 'radio' | 
@@ -32,7 +32,7 @@ export interface FormOptions {
     disabled?: boolean,
   },
   // 表单项的子元素
-  children?: FormOptions[],
+  children?: FormOption[],
   // 处理上传组件的属性和方法
   uploadAttrs?: {
     action: string,

@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { ref, watch, PropType } from 'vue'
-import { FormOptions } from '../../Form/src/types/type'
+import { FormOption } from '../../Form/src/types/type'
 
 const props = defineProps({
   isScroll: {
@@ -49,7 +49,7 @@ const props = defineProps({
     default: '100px'
   },
   options: {
-    type: Array as PropType<FormOptions[]>,
+    type: Array as PropType<FormOption[]>,
     required: true
   },
   onChange: {

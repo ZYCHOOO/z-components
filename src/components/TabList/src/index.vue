@@ -47,15 +47,15 @@
 <script setup lang="ts">
 import { onMounted, ref, PropType } from 'vue'
 import { camelCase2Line } from '../../../utils'
-import { ListOptions, ActionOptions, ListItem } from './types'
+import { ListOption, ActionOption, ListItem } from './types'
 
 const props = defineProps({
   list: {
-    type: Array as PropType<ListOptions[]>,
+    type: Array as PropType<ListOption[]>,
     required: true
   },
   actions: {
-    type: Array as PropType<ActionOptions[]>,
+    type: Array as PropType<ActionOption[]>,
     default: () => []
   }
 })
@@ -71,7 +71,7 @@ const itemClick = (item: ListItem) => {
   emits('item-click', { item })
 }
 
-const actionClick = (item: ActionOptions) => {
+const actionClick = (item: ActionOption) => {
   emits('action-click', { item })
 }
 

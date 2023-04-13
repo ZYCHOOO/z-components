@@ -7,6 +7,7 @@ import NavMenu from './NavMenu'
 import Notification  from './Notification'
 import Progress from './Progress'
 import TabList from './TabList'
+import Table from './Table'
 import Trend from './Trend'
 
 const components = [
@@ -17,6 +18,7 @@ const components = [
   NavMenu,
   Notification,
   Progress,
+  Table,
   TabList,
   Trend
 ]

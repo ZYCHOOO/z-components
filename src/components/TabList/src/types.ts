@@ -16,7 +16,7 @@ export interface ListItem {
 }
 
 // 列表
-export interface ListOptions {
+export interface ListOption {
   id: string | number,
   title: string,
   content: ListItem[]
@@ -24,7 +24,7 @@ export interface ListOptions {
 }
 
 // 操作选项
-export interface ActionOptions {
+export interface ActionOption {
   id: string | number,
   text: string,
   icon?: string
