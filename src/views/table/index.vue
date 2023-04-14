@@ -1,6 +1,12 @@
 <template>
   <div class="table-container">
-    <z-table :columns="columns" :data="tableData" >
+    <z-table
+      pagination
+      :columns="columns"
+      :data="tableData"
+      :total="tableData.length"
+      pagination-align="center"
+    >
       <template #name="{ scope }">
         <el-tag>{{ scope.row.name }}</el-tag>
       </template>

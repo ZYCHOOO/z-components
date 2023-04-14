@@ -70,6 +70,17 @@
       </template>
     </el-table-column>
   </el-table>
+  <div v-if="pagination && !loading" class="pagination" :style="{ justifyContent }">
+    <el-pagination
+      :modalValue="currentPage"
+      :page-sizes="pageSizes"
+      :page-size="pageSize"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -106,10 +117,40 @@ const props = defineProps({
   editIcon: {
     type: String,
     default: 'Edit'
+  },
+  // 是否展示分页
+  pagination: {
+    type: Boolean,
+    default: false
+  },
+    // 显示分页的对齐方式
+  paginationAlign: {
+    type: String as PropType<'left' | 'center' | 'right'>,
+    default: 'left'
+  },
+  // 当前是第几页
+  currentPage: {
+    type: Number,
+    default: 1
+  },
+  // 当前一页多少条数据
+  pageSize: {
+    type: Number,
+    default: 10
+  },
+  // 显示分页数据多少条的选项
+  pageSizes: {
+    type: Array,
+    default: () => [10, 20, 30, 40]
+  },
+  // 数据总条数
+  total: {
+    type: Number,
+    default: 0
   }
 })
 
-const emits = defineEmits(['handle-confirm', 'handle-cancel'])
+const emits = defineEmits(['handle-confirm', 'handle-cancel', 'size-change', 'current-change'])
 
 // 当前进入编辑的单元格
 let currentEdit = ref<string>('')
@@ -119,6 +160,13 @@ const tableColumns = computed(() => props.columns.filter(item => !item.action))
 
 // 操作项配置
 const actionColumn = computed(() => props.columns.find(item => item.action))
+
+// 表格分页的排列方式
+const justifyContent = computed(() => {
+  if (props.paginationAlign === 'left') return 'flex-start'
+  else if (props.paginationAlign === 'right') return 'flex-end'
+  else return 'center'
+})
 
 // 点击单元格内的编辑图标
 const clickEditIcon = (scope: any) => {
@@ -137,6 +185,17 @@ const handleConfirm = (scope: any) => {
 // 点击单元格内的取消图标
 const handleCancel = (scope: any) => {
   emits('handle-confirm', scope)
+}
+
+// 分页的每一页数据变化
+let handleSizeChange = (val: number) => {
+  emits('size-change', val)
+  // console.log(val)
+}
+// 分页页数改变
+let handleCurrentChange = (val: number) => {
+  emits('current-change', val)
+  // console.log(val)
 }
 </script>
 
@@ -165,5 +224,10 @@ const handleCancel = (scope: any) => {
       color: #F56C6C;
     }
   }
+}
+
+.pagination {
+  @include flex-row;
+  margin-top: 10px;
 }
 </style>
