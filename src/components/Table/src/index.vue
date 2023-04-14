@@ -23,10 +23,12 @@
           <template v-if="(scope.$index + scope.column.id) === currentEdit">
             <div class="action-cell">
               <el-input size="small" v-model="scope.row[item.prop!]" />
-              <slot v-if="slots['edit-cell']" name="edit-cell" :scope="scope" />
-              <div v-else class="action-cell-icons">
-                <el-icon-check class="confirm-icon" @click="handleConfirm(scope)" />
-                <el-icon-close class="cancel-icon" @click="handleCancel(scope)" />
+              <div class="action-cell-extension" @click="handleExtension">
+                <slot v-if="slots['edit-cell']" name="edit-cell" :scope="scope" />
+                <template v-else>
+                  <el-icon-check class="confirm-icon" @click="handleConfirm(scope)" />
+                  <el-icon-close class="cancel-icon" @click="handleCancel(scope)" />
+                </template>
               </div>
               </div>
           </template>
@@ -77,8 +79,6 @@ import { ColumnItem } from './type'
 
 const slots = useSlots()
 
-console.log(slots)
-
 const props = defineProps({
   columns: {
     type: Array as PropType<ColumnItem[]>,
@@ -125,19 +125,19 @@ const clickEditIcon = (scope: any) => {
   currentEdit.value = scope.$index + scope.column.id
 }
 
+// 点击单元格内按钮范围
+const handleExtension = () => {
+  currentEdit.value = ''
+}
+
 // 点击单元格内的确认图标
 const handleConfirm = (scope: any) => {
   emits('handle-confirm', scope)
-  currentEdit.value = ''
 }
 // 点击单元格内的取消图标
 const handleCancel = (scope: any) => {
   emits('handle-confirm', scope)
-  currentEdit.value = ''
 }
-
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -154,7 +154,7 @@ const handleCancel = (scope: any) => {
 
 .action-cell {
   @include flex-align-center;
-  &-icons {
+  &-extension {
     @include flex-row;
     margin-left: 6px;
     .confirm-icon {
