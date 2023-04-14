@@ -10,5 +10,7 @@ export interface ColumnItem {
   // 自定义列表模版名称
   slot?: string,
   // 是否操作箱
-  action?: boolean
+  action?: boolean,
+  // 是否是可编辑
+  editable?: boolean
 }
